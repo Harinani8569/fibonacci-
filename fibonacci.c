@@ -7,7 +7,9 @@
 
 
 int n;
-int a[n];
+int a[100];
+int b[100];
+int d[100];
 int i;
 void *fibb()
 {
@@ -30,6 +32,7 @@ n1= n2;
 n2=ans;
 
 }
+printf("The fibonacci series for the choosen number is\t");
 for(i=0;i<n;i++)
 {
 printf("%d\t",a[i]);
@@ -43,12 +46,12 @@ pthread_exit(a);
 }
 void *f1(void * args)
 {
-int d[n];
-*d=args;
-for( i=0;i<n;i++)
-{
-printf("%d\t",d[i]);
-}
+
+int *d=args;
+//for( i=0;i<n;i++)
+//{
+//printf("%d\t",d[i]);
+//}
 pthread_exit(NULL);
 
 }
@@ -59,14 +62,11 @@ pthread_t t1,t2;
 
 
 pthread_create(&t1,NULL,fibb,NULL);
-pthread_join(t1,(void*)a);
+pthread_join(t1,NULL);
 int *b= a;
 
 pthread_create(&t2,NULL,f1,b);
 pthread_join(t2,NULL);
-
-
-//printf("The num is %d",number);
 return 0;
 
 }
