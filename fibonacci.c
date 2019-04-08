@@ -14,6 +14,7 @@ int i;
 void *fibb()
 {
 int ans;
+printf("Thread 1 is created and started execution\n");
 printf("Enter the number upto which u want the series:");
 scanf("%d",&n);
 for(i=0;i<n;i++)
@@ -23,16 +24,20 @@ a[i]=n1;
 n1= n2;
 n2=ans;
 }
-printf("The fibonacci series for the choosen number is\t");
-for(i=0;i<n;i++)
-{
-printf("%d\t",a[i]);
-}
+printf("Thread 1 has sccesfully complted forming the series and stored it in the array \n");
+printf("Thread 1 exitted\n");
 pthread_exit(a);
 }
 void *f1(void * args)
 {
+printf("Thread 2 has been created and started executing....\n");
 int *d=args;
+printf("The fibonacci series for the choosen number is\t");
+for(i=0;i<n;i++)
+{
+printf("%d\t",d[i]);
+}
+printf("Thread 2 has displayed the array and exitted succesfully the fibonacci series");
 pthread_exit(NULL);
 }
 int main()
