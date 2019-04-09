@@ -43,10 +43,10 @@ pthread_exit(NULL);
 int main()
 {
 pthread_t t1,t2;
-pthread_create(&t1,NULL,fibb,NULL);
-pthread_join(t1,NULL);
+pthread_create(&t1,NULL,fibb,NULL); //creating thread 1 
+pthread_join(t1,NULL);              //joining thread 1 
 int *b= a;
-pthread_create(&t2,NULL,f1,b);
-pthread_join(t2,NULL);
+pthread_create(&t2,NULL,f1,b);      //creating thread 2 
+pthread_join(t2,NULL);              //joining thread 2
 return 0;
 }
